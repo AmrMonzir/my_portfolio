@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:my_portfolio/constants.dart';
+import 'package:url_strategy/url_strategy.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'home/home.dart';
+
+void main() {
+  setPathUrlStrategy();
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: Size(1920, 1217),
+      builder: () => MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            primarySwatch: Colors.grey,
+            primaryColor: kPrimaryColor,
+            accentColor: kAccentColor,
+            fontFamily: "Poppins",
+            buttonTheme: ButtonThemeData(hoverColor: kAccentColor),
+            textTheme: TextTheme(
+                bodyText1: TextStyle(color: Colors.white),
+                bodyText2: TextStyle(color: Colors.white)),
+            accentColorBrightness: Brightness.light),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Home(),
+        },
+      ),
+    );
+  }
+}
