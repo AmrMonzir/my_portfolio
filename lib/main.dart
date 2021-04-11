@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/about/about.dart';
 import 'package:my_portfolio/constants.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => Home(),
+          '/about': (context) => AboutPage(),
         },
       ),
     );

@@ -4,6 +4,10 @@ import 'package:my_portfolio/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopBar extends StatelessWidget {
+  final int navIndex;
+
+  const TopBar({required this.navIndex});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,36 +17,53 @@ class TopBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 84.w),
-            child: AutoSizeText("Portfolio",
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 84.w),
+              child: AutoSizeText(
+                "Portfolio",
                 maxLines: 1,
                 maxFontSize: 80,
                 style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: "Freestyle",
-                    fontSize: 80)),
+                    color: Colors.white, fontFamily: "Freestyle", fontSize: 80),
+              ),
+            ),
           ),
+          SizedBox(width: 50.w),
           Row(
             children: [
               MaterialButton(
                   padding: EdgeInsets.all(8.w),
-                  onPressed: () {},
-                  hoverColor: kAccentColor,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/');
+                  },
+                  color: navIndex == 0 ? kAccentColor : null,
+                  hoverColor: kAccentColor.withOpacity(0.3),
+                  child: AutoSizeText("Home",
+                      maxLines: 1, style: kAppBarButtonTextStyle)),
+              MaterialButton(
+                  padding: EdgeInsets.all(8.w),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/about');
+                  },
+                  color: navIndex == 1 ? kAccentColor : null,
+                  hoverColor: kAccentColor.withOpacity(0.3),
                   child: AutoSizeText("About",
                       maxLines: 1, style: kAppBarButtonTextStyle)),
               SizedBox(width: 16.w),
               MaterialButton(
                   padding: EdgeInsets.all(8.w),
                   onPressed: () {},
-                  hoverColor: kAccentColor,
+                  hoverColor: kAccentColor.withOpacity(0.3),
+                  color: navIndex == 2 ? kAccentColor : null,
                   child: AutoSizeText("Portfolio",
                       maxLines: 1, style: kAppBarButtonTextStyle)),
               SizedBox(width: 16.w),
               MaterialButton(
                   padding: EdgeInsets.all(8.w),
                   onPressed: () {},
-                  hoverColor: kAccentColor,
+                  hoverColor: kAccentColor.withOpacity(0.3),
+                  color: navIndex == 3 ? kAccentColor : null,
                   child: AutoSizeText("Contact",
                       maxLines: 1, style: kAppBarButtonTextStyle)),
               SizedBox(width: 87.w),

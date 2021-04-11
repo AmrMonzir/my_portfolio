@@ -3,13 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:my_portfolio/widgets/rounded_button.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyInfoColumn extends StatelessWidget {
   final CrossAxisAlignment? crossAlignment;
   final MainAxisAlignment? mainAlignment;
 
-  const MyInfoColumn({this.crossAlignment, this.mainAlignment});
+  final DeviceScreenType screenType;
+
+  const MyInfoColumn(
+      {this.crossAlignment, this.mainAlignment, required this.screenType});
 
   @override
   Widget build(BuildContext context) {
@@ -58,22 +63,17 @@ class MyInfoColumn extends StatelessWidget {
                 onPressed: () {
                   launch("https://www.linkedin.com/in/amr-monzir/");
                 },
-                icon: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: SvgPicture.asset(
-                      "assets/images/linkedin.svg",
-                    )),
+                icon: SvgPicture.asset(
+                  "assets/images/linkedin.svg",
+                ),
               ),
               SizedBox(width: 20.w),
               IconButton(
                 onPressed: () {
                   launch("https://twitter.com/AmrMonzir");
                 },
-                icon: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: SvgPicture.asset("assets/images/twitter.svg",
-                      color: Colors.white),
-                ),
+                icon: SvgPicture.asset("assets/images/twitter.svg",
+                    color: Colors.white),
               ),
               SizedBox(width: 20.w),
               IconButton(
@@ -81,23 +81,16 @@ class MyInfoColumn extends StatelessWidget {
                   launch(
                       "https://www.upwork.com/freelancers/~01184dd503ff38931f");
                 },
-                icon: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: SvgPicture.asset("assets/images/upwork.svg",
-                      color: Colors.white),
-                ),
+                icon: SvgPicture.asset("assets/images/upwork.svg",
+                    color: Colors.white),
               ),
               SizedBox(width: 20.w),
               IconButton(
-                splashRadius: 30,
                 onPressed: () {
                   launch("https://github.com/AmrMonzir");
                 },
-                icon: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Image.asset("assets/images/github.png",
-                      color: Colors.white),
-                ),
+                icon: Image.asset("assets/images/github.png",
+                    color: Colors.white),
               ),
             ],
           ),
@@ -110,36 +103,9 @@ class MyInfoColumn extends StatelessWidget {
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
             children: [
-              Expanded(
-                child: MaterialButton(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 30.h, horizontal: 80.w),
-                  onPressed: () {},
-                  child: AutoSizeText(
-                    "Hire Me",
-                    maxLines: 1,
-                    maxFontSize: 30,
-                    style: TextStyle(color: Colors.white, fontSize: 30),
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(60),
-                      side: BorderSide(color: Colors.white)),
-                ),
-              ),
+              Expanded(child: RoundedButton(text: "Hire Me")),
               SizedBox(width: 25.w),
-              Expanded(
-                child: MaterialButton(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 30.h, horizontal: 80.w),
-                    onPressed: () {},
-                    child: AutoSizeText("Portfolio",
-                        maxLines: 1,
-                        maxFontSize: 30,
-                        style: TextStyle(color: Colors.white, fontSize: 30)),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(60),
-                        side: BorderSide(color: Colors.white))),
-              ),
+              Expanded(child: RoundedButton(text: "Portfolio")),
             ],
           ),
         ),
