@@ -5,7 +5,7 @@ import 'package:my_portfolio/widgets/top_bar.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../constants.dart';
 
-class AboutPage extends StatelessWidget {
+class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

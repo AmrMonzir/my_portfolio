@@ -57,3 +57,7 @@ flutter:
       fonts:
         - asset: assets/fonts/Raleway-Italic-VariableFont_wght.ttf
         - asset: assets/fonts/Raleway-VariableFont_wght.ttf
+    - family: Hat
+      fonts:
+        - asset: assets/fonts/Haettenschweiler.ttf
+        - asset: assets/fonts/Haettenschweiler Regular.ttf

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/about/about.dart';
 import 'package:my_portfolio/constants.dart';
+import 'package:my_portfolio/portfolio/portfolio.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home/home.dart';
@@ -23,6 +24,11 @@ class MyApp extends StatelessWidget {
             accentColor: kAccentColor,
             fontFamily: "Poppins",
             buttonTheme: ButtonThemeData(hoverColor: kAccentColor),
+            cardTheme: CardTheme(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25)),
+                elevation: 0),
             textTheme: TextTheme(
                 bodyText1: TextStyle(color: Colors.white),
                 bodyText2: TextStyle(color: Colors.white)),
@@ -30,7 +36,8 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => Home(),
-          '/about': (context) => AboutPage(),
+          '/about': (context) => About(),
+          '/portfolio': (context) => Portfolio(),
         },
       ),
     );

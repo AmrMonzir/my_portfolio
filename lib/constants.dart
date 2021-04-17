@@ -7,3 +7,5 @@ const kAppBarButtonTextStyle =
 const kPrimaryColor = Color(0xff1b2023);
 
 const kAccentColor = Color(0xffc5c178);
+
+const kSampleTextStyle = TextStyle(color: Colors.black, fontSize: 100);

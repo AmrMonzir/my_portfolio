@@ -11,7 +11,7 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.h,
+      height: 150.h,
       width: double.infinity,
       color: kPrimaryColor,
       child: Row(
@@ -24,6 +24,7 @@ class TopBar extends StatelessWidget {
                 "Portfolio",
                 maxLines: 1,
                 maxFontSize: 80,
+                minFontSize: 20,
                 style: TextStyle(
                     color: Colors.white, fontFamily: "Freestyle", fontSize: 80),
               ),
@@ -44,7 +45,8 @@ class TopBar extends StatelessWidget {
               MaterialButton(
                   padding: EdgeInsets.all(8.w),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/about');
+                    if (ModalRoute.of(context)!.settings.name != "/about")
+                      Navigator.of(context).pushNamed('/about');
                   },
                   color: navIndex == 1 ? kAccentColor : null,
                   hoverColor: kAccentColor.withOpacity(0.3),
@@ -53,7 +55,10 @@ class TopBar extends StatelessWidget {
               SizedBox(width: 16.w),
               MaterialButton(
                   padding: EdgeInsets.all(8.w),
-                  onPressed: () {},
+                  onPressed: () {
+                    if (ModalRoute.of(context)!.settings.name != "/portfolio")
+                      Navigator.of(context).pushNamed('/portfolio');
+                  },
                   hoverColor: kAccentColor.withOpacity(0.3),
                   color: navIndex == 2 ? kAccentColor : null,
                   child: AutoSizeText("Portfolio",

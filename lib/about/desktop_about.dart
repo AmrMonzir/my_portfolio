@@ -60,7 +60,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                 ),
               ),
               Container(
-                  height: 100.h, child: RoundedButton(text: "Download CV")),
+                  height: 100.h,
+                  child: RoundedButton(
+                    text: "Download CV",
+                    onPress: () {},
+                  )),
               SizedBox(height: 100.h),
             ],
           ),

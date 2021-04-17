@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoundedButton extends StatefulWidget {
   final String text;
-
-  const RoundedButton({required this.text});
+  final onPress;
+  const RoundedButton({required this.text, required this.onPress});
 
   @override
   _RoundedButtonState createState() => _RoundedButtonState();
@@ -30,7 +30,7 @@ class _RoundedButtonState extends State<RoundedButton> {
           height: 150.h,
           minWidth: 200.w,
           padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 80.w),
-          onPressed: () {},
+          onPressed: widget.onPress,
           child: AutoSizeText(widget.text,
               maxLines: 1,
               maxFontSize: 30,

@@ -103,9 +103,20 @@ class MyInfoColumn extends StatelessWidget {
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
             children: [
-              Expanded(child: RoundedButton(text: "Hire Me")),
+              Expanded(
+                  child: RoundedButton(
+                text: "Hire Me",
+                onPress: () {},
+              )),
               SizedBox(width: 25.w),
-              Expanded(child: RoundedButton(text: "Portfolio")),
+              Expanded(
+                  child: RoundedButton(
+                text: "Portfolio",
+                onPress: () {
+                  if (ModalRoute.of(context)!.settings.name != "/portfolio")
+                    Navigator.of(context).pushNamed('/portfolio');
+                },
+              )),
             ],
           ),
         ),
