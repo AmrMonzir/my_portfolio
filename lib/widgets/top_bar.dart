@@ -66,7 +66,9 @@ class TopBar extends StatelessWidget {
               SizedBox(width: 16.w),
               MaterialButton(
                   padding: EdgeInsets.all(8.w),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/contact");
+                  },
                   hoverColor: kAccentColor.withOpacity(0.3),
                   color: navIndex == 3 ? kAccentColor : null,
                   child: AutoSizeText("Contact",

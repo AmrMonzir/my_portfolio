@@ -5,6 +5,7 @@ import 'package:my_portfolio/client_comments/desktop_client_comments.dart';
 import 'package:my_portfolio/home/fragments/my_info_column.dart';
 import 'package:my_portfolio/portfolio/desktop_portfolio.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:my_portfolio/connect/desktop_connect.dart';
 
 class DesktopHomePage extends StatelessWidget {
   @override
@@ -29,6 +30,10 @@ class DesktopHomePage extends StatelessWidget {
               )
             ],
           ),
+        ),
+        Container(
+          child: DesktopConnect(),
+          height: 1217.h,
         ),
         Container(
           child: DesktopAbout(),
