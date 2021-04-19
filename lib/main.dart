@@ -42,4 +42,26 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
+  List<List<int>> sortMatrixByOccurrences(List<List<int>> m) {
+    Map<int, int> numOfOccurrences = {};
+    for (int i = 0; i < m.length; i++) {
+      for (int j = 0; j < m[i].length; j++) {
+        if (numOfOccurrences[m[i][j]] != null) {
+          numOfOccurrences[m[i][j]] = numOfOccurrences[m[i][j]]! + 1;
+        } else {
+          numOfOccurrences[m[i][j]] = 1;
+        }
+      }
+    }
+    List<int> increasingOrderOccurrence = [];
+    numOfOccurrences.forEach((key, value) {
+      int count = 0;
+      while (count < value) {
+        count++;
+        increasingOrderOccurrence.add(key);
+      }
+    });
+    return [];
+  }
 }

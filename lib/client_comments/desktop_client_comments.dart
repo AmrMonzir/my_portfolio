@@ -7,19 +7,25 @@ class DesktopClientComments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(94.w, 20.h, 94.w, 0),
+      padding: EdgeInsets.fromLTRB(94.w, 20.h, 94.w, 94.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(
-            flex: 1,
+          Container(
+            height: 300.h,
             child: Column(
               children: [
-                AutoSizeText(
-                  "What My Clients Say About me",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.w600),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: AutoSizeText(
+                      "What My Clients Say About me",
+                      maxLines: 1,
+                      minFontSize: 30,
+                      style:
+                          TextStyle(fontSize: 60, fontWeight: FontWeight.w600),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 40.5.h),
                 Container(
@@ -28,79 +34,86 @@ class DesktopClientComments extends StatelessWidget {
                   color: kAccentColor,
                 ),
                 SizedBox(height: 40.5.h),
-                AutoSizeText(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et t enim ad minim veniam, quis nostrud exercitation.",
-                  maxLines: 3,
-                  style: TextStyle(fontWeight: FontWeight.w300, fontSize: 30),
+                Expanded(
+                  child: AutoSizeText(
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et t enim ad minim veniam, quis nostrud exercitation.",
+                    maxLines: 2,
+                    minFontSize: 15,
+                    style: TextStyle(fontWeight: FontWeight.w300, fontSize: 30),
+                  ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 250.h),
+          SizedBox(height: 80.h),
           Expanded(
-              flex: 4,
               child: Row(
-                children: [
-                  Expanded(child: Image.asset("assets/images/clients.png")),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 411.h,
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                child: Text(
-                                  '''"''',
-                                  style: TextStyle(
-                                      fontSize: 200.sp,
-                                      fontFamily: "Hat",
-                                      color: kAccentColor),
-                                ),
-                              ),
-                              Positioned(
-                                top: 137.h,
-                                child: AutoSizeText(
-                                  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt is the most explicabo. ",
-                                  maxLines: 6,
-                                  style: TextStyle(
-                                      fontSize: 30.sp,
-                                      fontWeight: FontWeight.w300),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 155.w,
-                            ),
-                            Text(
+            children: [
+              Expanded(child: Image.asset("assets/images/clients.png")),
+              SizedBox(width: 105.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 120.h),
+                    Container(
+                      height: 520.h,
+                      width: double.infinity,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            child: Text(
                               '''"''',
                               style: TextStyle(
                                   fontSize: 200.sp,
                                   fontFamily: "Hat",
                                   color: kAccentColor),
                             ),
-                          ],
-                        ),
-                        Text(
-                          "- Sara Smith",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          "CEO ABC Company",
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w300),
-                        ),
-                      ],
+                          ),
+                          Positioned(
+                            top: 137.h,
+                            child: Container(
+                              height: 300.h,
+                              width: 841.w,
+                              child: Text(
+                                "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt is the most explicabo. ",
+                                maxLines: 6,
+                                style: TextStyle(
+                                    fontSize: 30.sp,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            left: 318.w,
+                            child: Text(
+                              '''"''',
+                              style: TextStyle(
+                                  fontSize: 200.sp,
+                                  fontFamily: "Hat",
+                                  color: kAccentColor),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  )
-                ],
-              ))
+                    Text(
+                      "- Sara Smith",
+                      style: TextStyle(
+                          fontSize: 30.sp, fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "CEO ABC Company",
+                      style: TextStyle(
+                          fontSize: 22.sp, fontWeight: FontWeight.w300),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ))
         ],
       ),
     );

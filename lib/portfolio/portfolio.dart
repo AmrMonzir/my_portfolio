@@ -10,7 +10,9 @@ class Portfolio extends StatelessWidget {
       builder: (context, sizingInformation) {
         if (sizingInformation.isDesktop)
           return DesktopPortfolio(includeTopBar: true);
-        return MobilePortfolio();
+        return MobilePortfolio(
+          includeTopBar: true,
+        );
       },
     );
   }

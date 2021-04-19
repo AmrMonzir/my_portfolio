@@ -5,6 +5,9 @@ import 'package:my_portfolio/widgets/top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MobilePortfolio extends StatefulWidget {
+  final bool includeTopBar;
+
+  const MobilePortfolio({required this.includeTopBar});
   @override
   _MobilePortfolioState createState() => _MobilePortfolioState();
 }
@@ -43,37 +46,46 @@ class _MobilePortfolioState extends State<MobilePortfolio>
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        toolbarHeight: 250.h,
+        toolbarHeight: 300.h,
+        titleSpacing: 0,
         title: Column(
           children: [
-            TopBar(navIndex: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Row(
+            widget.includeTopBar
+                ? Column(
                     children: [
-                      Text(
-                        "Portfolio",
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.w300),
-                      ),
-                      SizedBox(width: 50.w),
-                      Expanded(
-                        child: Container(
-                          color: kAccentColor,
-                          height: 2.h,
-                        ),
-                      ),
+                      SizedBox(height: 50.h),
+                      TopBar(navIndex: 2),
                     ],
+                  )
+                : Container(),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Portfolio",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 50.w),
+                        Expanded(
+                          child: Container(
+                            color: kAccentColor,
+                            height: 2.h,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 50.h),
+            widget.includeTopBar ? SizedBox(height: 50.h) : Container(),
           ],
         ),
-        leadingWidth: 0,
         automaticallyImplyLeading: false,
         bottom: TabBar(
           controller: _tabController,
