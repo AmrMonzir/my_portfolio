@@ -4,8 +4,11 @@ import 'package:my_portfolio/about/desktop_about.dart';
 import 'package:my_portfolio/client_comments/desktop_client_comments.dart';
 import 'package:my_portfolio/home/fragments/my_info_column.dart';
 import 'package:my_portfolio/portfolio/desktop_portfolio.dart';
+import 'package:my_portfolio/widgets/bottom_nav.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:my_portfolio/connect/desktop_connect.dart';
+
+import '../constants.dart';
 
 class DesktopHomePage extends StatelessWidget {
   @override
@@ -13,7 +16,6 @@ class DesktopHomePage extends StatelessWidget {
     return Scrollbar(
       child: ListView(children: [
         Container(
-          width: double.infinity,
           height: 1217.h,
           child: Row(
             children: [
@@ -22,6 +24,7 @@ class DesktopHomePage extends StatelessWidget {
                 flex: 2,
                 child: MyInfoColumn(
                   screenType: DeviceScreenType.desktop,
+                  mainAlignment: MainAxisAlignment.spaceEvenly,
                 ),
               ),
               Expanded(
@@ -31,10 +34,8 @@ class DesktopHomePage extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          child: DesktopConnect(),
-          height: 1217.h,
-        ),
+        Divider(color: Color(0xff707070)),
+        SizedBox(height: 40.h),
         Container(
           child: DesktopAbout(),
           height: 1217.h,
@@ -55,6 +56,14 @@ class DesktopHomePage extends StatelessWidget {
           child: DesktopClientComments(),
           height: 1217.h,
         ),
+        Divider(color: kAccentColor),
+        SizedBox(height: 40.h),
+        Container(
+          child: DesktopConnect(),
+          height: 1190.h,
+        ),
+        Divider(color: kAccentColor),
+        BottomNavigation(),
       ]),
     );
   }

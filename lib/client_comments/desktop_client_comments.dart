@@ -21,13 +21,11 @@ class DesktopClientComments extends StatelessWidget {
                     child: AutoSizeText(
                       "What My Clients Say About me",
                       maxLines: 1,
-                      minFontSize: 30,
                       style:
                           TextStyle(fontSize: 60, fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
-                SizedBox(height: 40.5.h),
                 Container(
                   width: 345.w,
                   height: 2,
@@ -38,7 +36,6 @@ class DesktopClientComments extends StatelessWidget {
                   child: AutoSizeText(
                     "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et t enim ad minim veniam, quis nostrud exercitation.",
                     maxLines: 2,
-                    minFontSize: 15,
                     style: TextStyle(fontWeight: FontWeight.w300, fontSize: 30),
                   ),
                 ),

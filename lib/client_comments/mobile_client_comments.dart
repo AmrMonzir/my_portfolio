@@ -40,7 +40,6 @@ class MobileClientComments extends StatelessWidget {
                         child: AutoSizeText(
                           "What My Clients Say About me",
                           maxLines: 1,
-                          minFontSize: 30,
                           style: TextStyle(
                               fontSize: 60, fontWeight: FontWeight.w600),
                         ),
