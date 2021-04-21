@@ -37,7 +37,7 @@ class DesktopHomePage extends StatelessWidget {
         Divider(color: Color(0xff707070)),
         SizedBox(height: 40.h),
         Container(
-          child: DesktopAbout(),
+          child: DesktopAbout(inHome: true),
           height: 1217.h,
         ),
         SizedBox(height: 40.h),
@@ -59,7 +59,7 @@ class DesktopHomePage extends StatelessWidget {
         Divider(color: kAccentColor),
         SizedBox(height: 40.h),
         Container(
-          child: DesktopConnect(),
+          child: DesktopConnect(inHome: true),
           height: 1190.h,
         ),
         Divider(color: kAccentColor),

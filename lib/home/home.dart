@@ -13,7 +13,13 @@ class Home extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       body: Column(
         children: [
-          TopBar(navIndex: 0),
+          ResponsiveBuilder(builder:
+              (BuildContext context, SizingInformation sizingInformation) {
+            if (sizingInformation.isDesktop)
+              return TopBar(navIndex: 0);
+            else
+              return Container();
+          }),
           Expanded(
             child: ResponsiveBuilder(builder: (context, sizingInformation) {
               if (sizingInformation.deviceScreenType ==

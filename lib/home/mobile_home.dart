@@ -7,52 +7,59 @@ import 'package:my_portfolio/home/fragments/my_info_column.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/portfolio/mobile_portfolio.dart';
 import 'package:my_portfolio/widgets/bottom_nav.dart';
+import 'package:my_portfolio/widgets/my_drawer.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class MobileHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      Column(
-        children: [
-          CircleAvatar(
-            backgroundImage: AssetImage("assets/images/me3.png"),
-            radius: 80,
-          ),
-          SizedBox(height: 30.h),
-          MyInfoColumn(
-            screenType: DeviceScreenType.mobile,
-            crossAlignment: CrossAxisAlignment.center,
-          ),
-        ],
+    return Scaffold(
+      backgroundColor: kPrimaryColor,
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
       ),
-      SizedBox(height: 40.h),
-      Container(
-        height: 1217.h,
-        child: MobileAbout(),
-      ),
-      Divider(color: kAccentColor),
-      SizedBox(height: 80.h),
-      Container(
-        height: 1217.h,
-        child: MobilePortfolio(
-          includeTopBar: false,
+      drawer: MyDrawer(indexSelected: 0),
+      body: ListView(children: [
+        Column(
+          children: [
+            SizedBox(height: 30.h),
+            CircleAvatar(
+              backgroundImage: AssetImage("assets/images/me3.png"),
+              radius: 80,
+            ),
+            SizedBox(height: 30.h),
+            MyInfoColumn(
+              screenType: DeviceScreenType.mobile,
+              crossAlignment: CrossAxisAlignment.center,
+            ),
+          ],
         ),
-      ),
-      Divider(color: kAccentColor),
-      SizedBox(height: 40.h),
-      Container(
-        height: 1217.h,
-        child: MobileClientComments(),
-      ),
-      Divider(color: kAccentColor),
-      SizedBox(height: 40.h),
-      Container(
-        height: 1217.h,
-        child: MobileConnect(),
-      ),
-      Divider(color: kAccentColor),
-      BottomNavigation(),
-    ]);
+        SizedBox(height: 40.h),
+        Container(
+          height: 1217.h,
+          child: MobileAbout(inHome: true),
+        ),
+        Divider(color: kAccentColor),
+        SizedBox(height: 20.h),
+        Container(
+          height: 1217.h,
+          child: MobilePortfolio(inHome: true),
+        ),
+        Divider(color: kAccentColor),
+        SizedBox(height: 40.h),
+        Container(
+          height: 1217.h,
+          child: MobileClientComments(),
+        ),
+        Divider(color: kAccentColor),
+        SizedBox(height: 40.h),
+        Container(
+          height: 1330.h,
+          child: MobileConnect(inHome: true),
+        ),
+        Divider(color: kAccentColor),
+        BottomNavigation(),
+      ]),
+    );
   }
 }

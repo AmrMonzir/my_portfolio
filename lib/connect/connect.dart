@@ -9,20 +9,12 @@ import 'mobile_connect.dart';
 class Connect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPrimaryColor,
-      body: Column(
-        children: [
-          TopBar(navIndex: 3),
-          Expanded(
-            child: ResponsiveBuilder(
-              builder: (context, sizingInformation) {
-                if (sizingInformation.isDesktop) return DesktopConnect();
-                return MobileConnect();
-              },
-            ),
-          ),
-        ],
+    return Expanded(
+      child: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          if (sizingInformation.isDesktop) return DesktopConnect(inHome: false);
+          return MobileConnect(inHome: false);
+        },
       ),
     );
   }

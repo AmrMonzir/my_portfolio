@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: Size(1920, 1217),
       builder: () => MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Amr Monzir',
         theme: ThemeData(
             primarySwatch: Colors.grey,
             primaryColor: kPrimaryColor,

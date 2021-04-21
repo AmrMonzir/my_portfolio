@@ -110,7 +110,7 @@ class MyInfoColumn extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   mainAxisAlignment: crossAlignment != null
-                      ? MainAxisAlignment.center
+                      ? MainAxisAlignment.spaceBetween
                       : MainAxisAlignment.start,
                   children: [
                     Expanded(

@@ -13,9 +13,7 @@ class Portfolio extends StatelessWidget {
           return Scaffold(
               body: DesktopPortfolio(includeTopBar: true),
               backgroundColor: kPrimaryColor);
-        return MobilePortfolio(
-          includeTopBar: true,
-        );
+        return MobilePortfolio(inHome: false);
       },
     );
   }

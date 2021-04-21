@@ -1,13 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants.dart';
+import 'package:my_portfolio/widgets/my_drawer.dart';
 import 'package:my_portfolio/widgets/top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MobilePortfolio extends StatefulWidget {
-  final bool includeTopBar;
+  final bool inHome;
 
-  const MobilePortfolio({required this.includeTopBar});
+  const MobilePortfolio({required this.inHome});
   @override
   _MobilePortfolioState createState() => _MobilePortfolioState();
 }
@@ -15,11 +16,7 @@ class MobilePortfolio extends StatefulWidget {
 class _MobilePortfolioState extends State<MobilePortfolio>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  Map<int, bool> tabSelected = {
-    0: true,
-    1: false,
-    2: false,
-  };
+  int tabSelected = 0;
 
   @override
   void initState() {
@@ -27,14 +24,7 @@ class _MobilePortfolioState extends State<MobilePortfolio>
     _tabController.addListener(() {
       if (!_tabController.indexIsChanging) {
         setState(() {
-          for (int i = 0; i < tabSelected.length; i++) {
-            setState(() {
-              tabSelected[i] = false;
-            });
-          }
-          setState(() {
-            tabSelected[_tabController.index] = true;
-          });
+          tabSelected = _tabController.index;
         });
       }
     });
@@ -46,68 +36,62 @@ class _MobilePortfolioState extends State<MobilePortfolio>
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        toolbarHeight: 300.h,
-        titleSpacing: 0,
-        title: Column(
-          children: [
-            widget.includeTopBar
-                ? Column(
-                    children: [
-                      SizedBox(height: 50.h),
-                      TopBar(navIndex: 2),
-                    ],
-                  )
-                : Container(),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Portfolio",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        SizedBox(width: 50.w),
-                        Expanded(
-                          child: Container(
-                            color: kAccentColor,
-                            height: 2.h,
-                          ),
-                        ),
-                      ],
+          automaticallyImplyLeading: widget.inHome ? false : true,
+          elevation: widget.inHome ? 0 : 4,
+          centerTitle: true,
+          title: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Portfolio",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Row(
+                        children: [
+                          SizedBox(width: 50.w),
+                          Expanded(
+                            child: Container(
+                              color: kAccentColor,
+                              height: 2.h,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            widget.includeTopBar ? SizedBox(height: 50.h) : Container(),
-          ],
-        ),
-        automaticallyImplyLeading: false,
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: [
-            Text("All",
-                style: TextStyle(
-                    color: tabSelected[0]! ? kAccentColor : Colors.white,
-                    fontWeight: FontWeight.w300,
-                    fontSize: 20)),
-            AutoSizeText("Mobile apps",
-                style: TextStyle(
-                    color: tabSelected[1]! ? kAccentColor : Colors.white,
-                    fontWeight: FontWeight.w300,
-                    fontSize: 20)),
-            AutoSizeText("Websites",
-                style: TextStyle(
-                    color: tabSelected[2]! ? kAccentColor : Colors.white,
-                    fontWeight: FontWeight.w300,
-                    fontSize: 20)),
-          ],
-        ),
-      ),
+              widget.inHome ? SizedBox(height: 50.h) : Container(),
+            ],
+          ),
+          bottom: TabBar(
+            controller: _tabController,
+            tabs: [
+              Text("All",
+                  style: TextStyle(
+                      color: tabSelected == 0 ? kAccentColor : Colors.white,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 20)),
+              AutoSizeText("Apps",
+                  style: TextStyle(
+                      color: tabSelected == 1 ? kAccentColor : Colors.white,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 20)),
+              AutoSizeText("Websites",
+                  style: TextStyle(
+                      color: tabSelected == 2 ? kAccentColor : Colors.white,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 20)),
+            ],
+          ),
+          toolbarHeight: 200.h),
+      drawer: MyDrawer(indexSelected: 2),
       body: TabBarView(
         controller: _tabController,
         children: [
