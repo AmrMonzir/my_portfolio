@@ -47,7 +47,7 @@ class DesktopHomePage extends StatelessWidget {
           child: DesktopPortfolio(
             includeTopBar: false,
           ),
-          height: 1217.h,
+          height: 1000.h,
         ),
         SizedBox(height: 80.h),
         Divider(color: Color(0xff707070)),

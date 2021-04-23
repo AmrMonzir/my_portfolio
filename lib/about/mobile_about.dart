@@ -84,9 +84,7 @@ class MobileAbout extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.all(45.0.w),
                           child: AutoSizeText(
-                            '''Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.''',
+                            '''Amr is a passionate freelance software developer with experience in C# (Unity3D, .Net), C++, Java (Android), and currently in love with Flutter and going through its stages in learning best practicies and developing his suite of skills. Amr is always on the look out for new and exciting opportunities!''',
                             maxFontSize: 24,
                             style: TextStyle(
                                 fontSize: 24,

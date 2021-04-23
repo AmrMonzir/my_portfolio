@@ -24,20 +24,23 @@ class BottomNavigation extends StatelessWidget {
                 color: Colors.white, fontFamily: "Freestyle", fontSize: 95),
           ),
           SizedBox(height: 45.h),
-          Wrap(alignment: WrapAlignment.center, children: [
-            Text(
-              "Amr Monzir Abdallatif |",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            Text(
-              " Gaza - Palestine |",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            SelectableText(
-              " amrmonzir@gmail.com",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ]),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Wrap(alignment: WrapAlignment.center, children: [
+              Text(
+                "Amr Monzir Abdallatif |",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              Text(
+                " Gaza - Palestine |",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              SelectableText(
+                " amrmonzir@gmail.com",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ]),
+          ),
           SizedBox(height: 50.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

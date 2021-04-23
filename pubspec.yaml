@@ -30,6 +30,13 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/bmi/
+    - assets/images/compagno/
+    - assets/images/flash_chat/
+    - assets/images/health_tracker/
+    - assets/images/munchy/
+    - assets/images/my_sources/
+    - assets/images/weather/
   fonts:
     - family: Poppins
       fonts:

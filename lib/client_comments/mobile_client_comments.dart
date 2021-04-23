@@ -56,7 +56,7 @@ class MobileClientComments extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: AutoSizeText(
-                          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et t enim ad minim veniam, quis nostrud exercitation.",
+                          "Have a glimpse of what my clients think about my work! Maybe you can be the next one?",
                           maxLines: 2,
                           minFontSize: 15,
                           style: TextStyle(
@@ -109,7 +109,7 @@ class MobileClientComments extends StatelessWidget {
                                             width: 1820.w,
                                             height: 274.h,
                                             child: Text(
-                                              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt is the most explicabo. ",
+                                              "Amr has multiple significant traits, such as being articulate and disciplined with his work. He takes good care of the work he does. He is substantially creative as well as professional. I enjoyed working with him immensely, and would love to keep the flow of projects going.",
                                               maxLines: 6,
                                               style: TextStyle(
                                                   fontSize: 75.sp,
@@ -129,16 +129,18 @@ class MobileClientComments extends StatelessWidget {
                                         ),
                                         Positioned(
                                             child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  "- Sara Smith",
+                                                  "- Ali Al-Zubaidi",
                                                   style: TextStyle(
                                                       fontSize: 30,
                                                       fontWeight:
                                                           FontWeight.w500),
                                                 ),
                                                 Text(
-                                                  "CEO ABC Company",
+                                                  "Client For My Sources App",
                                                   style: TextStyle(
                                                       fontSize: 22,
                                                       fontWeight:

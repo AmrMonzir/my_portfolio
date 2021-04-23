@@ -4,6 +4,7 @@ import 'package:my_portfolio/constants.dart';
 import 'package:my_portfolio/widgets/my_drawer.dart';
 import 'package:my_portfolio/widgets/top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MobilePortfolio extends StatefulWidget {
   final bool inHome;
@@ -113,152 +114,68 @@ class _MobilePortfolioState extends State<MobilePortfolio>
   }
 
   List<Widget> _prepareAllTab() {
-    return [
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25),
-        ],
-      ),
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25),
-        ],
-      ),
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25)
-        ],
-      ),
-    ];
+    var allApps = _prepareAppsTab();
+    var allWebsites = _prepareWebsitesTab();
+    allApps.addAll(allWebsites);
+    return allApps;
   }
 
   List<Widget> _prepareAppsTab() {
     return [
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample App",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25),
-        ],
-      ),
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample App",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25),
-        ],
-      ),
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample App",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25),
-        ],
-      ),
+      PortfolioCard(
+          imageURL: "assets/images/my_sources/banner.png",
+          urlToLaunch:
+              "https://play.google.com/store/apps/details?id=com.amrmonzir.my_sources"),
+      PortfolioCard(
+          imageURL: "assets/images/munchy/logo.jpg",
+          urlToLaunch: "https://github.com/AmrMonzir/munchy"),
+      PortfolioCard(
+          imageURL: "assets/images/compagno/logo.jpg",
+          urlToLaunch: "https://github.com/AmrMonzir/sample_compagno"),
+      PortfolioCard(imageURL: "assets/images/bmi/screenshot.jpg"),
+      PortfolioCard(imageURL: "assets/images/weather/screenshot.jpg"),
+      PortfolioCard(imageURL: "assets/images/flash_chat/logo.jpg"),
+      PortfolioCard(imageURL: "assets/images/health_tracker/screenshot.jpg"),
     ];
   }
 
   List<Widget> _prepareWebsitesTab() {
     return [
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample Website",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25)
-        ],
-      ),
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample Website",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25)
-        ],
-      ),
-      Column(
-        children: [
-          Container(
-            height: 450.h,
-            child: Card(
-              child: Center(
-                  child: Text(
-                "Sample Website",
-                style: TextStyle(color: Colors.black, fontSize: 100.sp),
-              )),
-            ),
-          ),
-          SizedBox(height: 25)
-        ],
-      ),
+      PortfolioCard(
+        imageURL: "assets/images/portfolio.JPG",
+        urlToLaunch: "https://amrmonzir.github.io/",
+      )
     ];
+  }
+}
+
+class PortfolioCard extends StatelessWidget {
+  final String imageURL;
+  final String? urlToLaunch;
+
+  const PortfolioCard({required this.imageURL, this.urlToLaunch});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 450.h,
+          width: double.infinity,
+          child: Card(
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+                onTap: () {
+                  if (urlToLaunch != null) launch(urlToLaunch!);
+                },
+                child: Image.asset(imageURL,
+                    fit: imageURL.contains("portfolio")
+                        ? BoxFit.cover
+                        : BoxFit.fitWidth)),
+          ),
+        ),
+        SizedBox(height: 25),
+      ],
+    );
   }
 }

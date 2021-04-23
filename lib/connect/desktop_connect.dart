@@ -55,7 +55,7 @@ class _ConnectDesktopState extends State<DesktopConnect> {
                   Container(
                       child: Center(
                         child: AutoSizeText(
-                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et t enim ad minim veniam, quis nostrud exercitation.",
+                            "If you liked what you saw so far, and you have something I could help you with, send me a message and let's have a chat about it!",
                             style: TextStyle(
                                 fontWeight: FontWeight.w300, fontSize: 20),
                             textAlign: TextAlign.center,

@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/constants.dart';
@@ -7,8 +6,7 @@ import 'package:my_portfolio/widgets/top_bar.dart';
 class DesktopPortfolio extends StatefulWidget {
   final bool includeTopBar;
 
-  const DesktopPortfolio({Key? key, required this.includeTopBar})
-      : super(key: key);
+  const DesktopPortfolio({required this.includeTopBar});
 
   @override
   _DesktopPortfolioState createState() => _DesktopPortfolioState();
@@ -55,39 +53,119 @@ class _DesktopPortfolioState extends State<DesktopPortfolio> {
                           ],
                         ),
                       ),
-                      MaterialButton(
-                          shape: CircleBorder(
-                              side: BorderSide(
-                                  color: Colors.white.withOpacity(0.5))),
-                          onPressed: () {
-                            for (int i = 0; i < tabSelected.length; i++)
-                              setState(() {
-                                tabSelected[i] = false;
-                              });
-                            setState(() {
-                              tabSelected[--currTab] = true;
-                            });
-                          },
-                          padding: EdgeInsets.all(30),
-                          child: Icon(Icons.arrow_back_ios_outlined,
-                              color: Colors.white, size: 20)),
-                      SizedBox(width: 20.w),
-                      MaterialButton(
-                          shape: CircleBorder(
-                              side: BorderSide(
-                                  color: Colors.white.withOpacity(0.5))),
-                          onPressed: () {
-                            for (int i = 0; i < tabSelected.length; i++)
-                              setState(() {
-                                tabSelected[i] = false;
-                              });
-                            setState(() {
-                              tabSelected[++currTab] = true;
-                            });
-                          },
-                          padding: EdgeInsets.all(30),
-                          child: Icon(Icons.arrow_forward_ios_outlined,
-                              color: Colors.white, size: 20)),
+                      !widget.includeTopBar
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
+                                  children: [
+                                    MaterialButton(
+                                        shape: CircleBorder(
+                                            side: BorderSide(
+                                                color: Colors.white
+                                                    .withOpacity(0.5))),
+                                        onPressed: () {
+                                          for (int i = 0;
+                                              i < tabSelected.length;
+                                              i++)
+                                            setState(() {
+                                              tabSelected[i] = false;
+                                            });
+                                          setState(() {
+                                            tabSelected[--currTab] = true;
+                                          });
+                                        },
+                                        padding: EdgeInsets.all(30),
+                                        child: Icon(
+                                            Icons.arrow_back_ios_outlined,
+                                            color: Colors.white,
+                                            size: 20)),
+                                    SizedBox(width: 20.w),
+                                    MaterialButton(
+                                        shape: CircleBorder(
+                                            side: BorderSide(
+                                                color: Colors.white
+                                                    .withOpacity(0.5))),
+                                        onPressed: () {
+                                          for (int i = 0;
+                                              i < tabSelected.length;
+                                              i++)
+                                            setState(() {
+                                              tabSelected[i] = false;
+                                            });
+                                          setState(() {
+                                            tabSelected[++currTab] = true;
+                                          });
+                                        },
+                                        padding: EdgeInsets.all(30),
+                                        child: Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: Colors.white,
+                                            size: 20)),
+                                  ],
+                                ),
+                                SizedBox(height: 22.h),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .pushNamed("/portfolio");
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Text("See all  ",
+                                          style: TextStyle(fontSize: 25)),
+                                      Icon(Icons.arrow_forward,
+                                          size: 30, color: Colors.white)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )
+                          : Row(
+                              children: [
+                                MaterialButton(
+                                    shape: CircleBorder(
+                                        side: BorderSide(
+                                            color:
+                                                Colors.white.withOpacity(0.5))),
+                                    onPressed: () {
+                                      for (int i = 0;
+                                          i < tabSelected.length;
+                                          i++)
+                                        setState(() {
+                                          tabSelected[i] = false;
+                                        });
+                                      setState(() {
+                                        tabSelected[--currTab] = true;
+                                      });
+                                    },
+                                    padding: EdgeInsets.all(30),
+                                    child: Icon(Icons.arrow_back_ios_outlined,
+                                        color: Colors.white, size: 20)),
+                                SizedBox(width: 20.w),
+                                MaterialButton(
+                                    shape: CircleBorder(
+                                        side: BorderSide(
+                                            color:
+                                                Colors.white.withOpacity(0.5))),
+                                    onPressed: () {
+                                      for (int i = 0;
+                                          i < tabSelected.length;
+                                          i++)
+                                        setState(() {
+                                          tabSelected[i] = false;
+                                        });
+                                      setState(() {
+                                        tabSelected[++currTab] = true;
+                                      });
+                                    },
+                                    padding: EdgeInsets.all(30),
+                                    child: Icon(
+                                        Icons.arrow_forward_ios_outlined,
+                                        color: Colors.white,
+                                        size: 20)),
+                              ],
+                            ),
                     ],
                   ),
                   SizedBox(height: 25.h),
@@ -155,9 +233,7 @@ class _DesktopPortfolioState extends State<DesktopPortfolio> {
                     ],
                   ),
                   SizedBox(height: 20.h),
-                  Expanded(
-                    child: _prepareBottomWidget(),
-                  ),
+                  Expanded(child: _prepareBottomWidget()),
                 ],
               ),
             ),
@@ -178,36 +254,15 @@ class _DesktopPortfolioState extends State<DesktopPortfolio> {
       return Container();
   }
 
-  List<Widget> _generateSampleCards(String text, int num) {
-    List<Widget> l = [];
-    for (int i = 0; i < num; i++) {
-      l.add(
-        ProjectCard(
-          firstWidget: Center(
-              child: AutoSizeText(
-            text,
-            maxLines: 1,
-            style: kSampleTextStyle,
-          )),
-          secondWidget: Center(
-              child: AutoSizeText(
-            text,
-            maxLines: 1,
-            style: kSampleTextStyle,
-          )),
-        ),
-      );
-    }
-    return l;
-  }
-
   Widget _prepareAllTab() {
     return GridView.count(
       mainAxisSpacing: 108.h,
       crossAxisCount: 3,
       crossAxisSpacing: 114.w,
       padding: EdgeInsets.only(top: 40.h, bottom: 40.h),
-      children: _generateSampleCards("Sample", 6),
+      children: !widget.includeTopBar
+          ? (kAppCards + kWebCards).getRange(0, 3).toList()
+          : kAppCards + kWebCards,
     );
   }
 
@@ -217,83 +272,20 @@ class _DesktopPortfolioState extends State<DesktopPortfolio> {
       crossAxisCount: 3,
       crossAxisSpacing: 114.w,
       padding: EdgeInsets.only(top: 40.h, bottom: 40.h),
-      children: _generateSampleCards("Sample App", 4),
+      children:
+          !widget.includeTopBar ? kAppCards.getRange(0, 3).toList() : kAppCards,
     );
   }
 
   Widget _prepareWebsitesTab() {
+    var webCards3 =
+        kWebCards.length >= 3 ? kWebCards.getRange(0, 3).toList() : kWebCards;
     return GridView.count(
       mainAxisSpacing: 108.h,
       crossAxisCount: 3,
       crossAxisSpacing: 114.w,
       padding: EdgeInsets.only(top: 40.h, bottom: 40.h),
-      children: _generateSampleCards("Sample Website", 4),
-    );
-  }
-}
-
-class ProjectCard extends StatefulWidget {
-  final onPress;
-  final Widget firstWidget;
-  final Widget secondWidget;
-
-  const ProjectCard({
-    this.onPress,
-    required this.firstWidget,
-    required this.secondWidget,
-  });
-
-  @override
-  _ProjectCardState createState() => _ProjectCardState();
-}
-
-class _ProjectCardState extends State<ProjectCard> {
-  bool hovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (event) {
-        setState(() {
-          hovered = true;
-        });
-      },
-      onExit: (event) {
-        setState(() {
-          hovered = false;
-        });
-      },
-      child: GestureDetector(
-        onTap: widget.onPress,
-        child: AnimatedCrossFade(
-          firstChild: Card(
-            child: widget.firstWidget,
-          ),
-          layoutBuilder: (topChild, topChildKey, bottomChild, bottomChildKey) {
-            return Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.center,
-              children: [
-                Positioned.fill(
-                  key: bottomChildKey,
-                  child: bottomChild,
-                ),
-                Positioned(
-                  key: topChildKey,
-                  child: topChild,
-                ),
-              ],
-            );
-          },
-          secondChild: Card(
-            color: Color(0xffFF0513),
-            child: widget.secondWidget,
-          ),
-          duration: Duration(milliseconds: 400),
-          crossFadeState:
-              hovered ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-        ),
-      ),
+      children: !widget.includeTopBar ? webCards3 : kWebCards,
     );
   }
 }
