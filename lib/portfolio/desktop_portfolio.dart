@@ -22,7 +22,6 @@ class _DesktopPortfolioState extends State<DesktopPortfolio> {
       children: [
         widget.includeTopBar ? TopBar(navIndex: 2) : Container(),
         Flexible(
-          fit: FlexFit.loose,
           child: Padding(
             padding: EdgeInsets.fromLTRB(94.w, 30.h, 94.w, 0),
             child: Column(

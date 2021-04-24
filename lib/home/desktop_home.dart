@@ -65,7 +65,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
         SizedBox(height: 40.h),
         Container(
           child: DesktopConnect(inHome: true),
-          height: 1190.h,
+          height: 1000.h,
         ),
         Divider(color: kAccentColor),
         BottomNavigation(),

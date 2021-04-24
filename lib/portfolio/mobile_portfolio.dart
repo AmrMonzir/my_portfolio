@@ -131,7 +131,6 @@ class _MobilePortfolioState extends State<MobilePortfolio>
               ? Padding(
                   padding: EdgeInsets.all(30.0.h),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     children: _prepareAllTab().getRange(0, 2).toList(),
                   ),
                 )
@@ -141,7 +140,7 @@ class _MobilePortfolioState extends State<MobilePortfolio>
                 ),
           widget.inHome
               ? Padding(
-                  padding: const EdgeInsets.all(30.0),
+                  padding: EdgeInsets.all(30.0.h),
                   child: Column(
                     children: _prepareAppsTab().getRange(0, 2).toList(),
                   ),
@@ -152,7 +151,7 @@ class _MobilePortfolioState extends State<MobilePortfolio>
                 ),
           widget.inHome
               ? Padding(
-                  padding: const EdgeInsets.all(30.0),
+                  padding: EdgeInsets.all(30.0.h),
                   child: Column(
                       children: _prepareWebsitesTab()
                           .getRange(
