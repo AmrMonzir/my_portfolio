@@ -5,12 +5,20 @@ import 'package:my_portfolio/client_comments/desktop_client_comments.dart';
 import 'package:my_portfolio/home/fragments/my_info_column.dart';
 import 'package:my_portfolio/portfolio/desktop_portfolio.dart';
 import 'package:my_portfolio/widgets/bottom_nav.dart';
+import 'package:my_portfolio/widgets/measureable_widget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:my_portfolio/connect/desktop_connect.dart';
 
 import '../constants.dart';
 
-class DesktopHomePage extends StatelessWidget {
+class DesktopHomePage extends StatefulWidget {
+  @override
+  _DesktopHomePageState createState() => _DesktopHomePageState();
+}
+
+class _DesktopHomePageState extends State<DesktopHomePage> {
+  double heightOfPortfolio = 1000.h;
+
   @override
   Widget build(BuildContext context) {
     return Scrollbar(
@@ -43,11 +51,8 @@ class DesktopHomePage extends StatelessWidget {
         SizedBox(height: 40.h),
         Divider(color: Color(0xff707070)),
         SizedBox(height: 40.h),
-        Container(
-          child: DesktopPortfolio(
-            includeTopBar: false,
-          ),
-          height: 1000.h,
+        DesktopPortfolio(
+          includeTopBar: false,
         ),
         SizedBox(height: 80.h),
         Divider(color: Color(0xff707070)),

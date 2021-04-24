@@ -2,9 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants.dart';
 import 'package:my_portfolio/widgets/my_drawer.dart';
-import 'package:my_portfolio/widgets/top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import 'widgets/portfolio_card_mobile.dart';
 
 class MobilePortfolio extends StatefulWidget {
   final bool inHome;
@@ -47,24 +47,53 @@ class _MobilePortfolioState extends State<MobilePortfolio>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Portfolio",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
-                    ),
                     Expanded(
+                      flex: 3,
                       child: Row(
+                        mainAxisAlignment: !widget.inHome
+                            ? MainAxisAlignment.spaceBetween
+                            : MainAxisAlignment.start,
                         children: [
-                          SizedBox(width: 50.w),
+                          Text(
+                            "Portfolio",
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.w300),
+                          ),
                           Expanded(
-                            child: Container(
-                              color: kAccentColor,
-                              height: 2.h,
+                            child: Row(
+                              children: [
+                                SizedBox(width: 50.w),
+                                Expanded(
+                                  child: Container(
+                                    color: kAccentColor,
+                                    height: 2.h,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
+                    widget.inHome
+                        ? Expanded(
+                            flex: 1,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushNamed("/portfolio");
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text("See all  ",
+                                      style: TextStyle(fontSize: 15)),
+                                  Icon(Icons.arrow_forward,
+                                      size: 15, color: Colors.white)
+                                ],
+                              ),
+                            ),
+                          )
+                        : Container(),
                   ],
                 ),
               ),
@@ -85,6 +114,8 @@ class _MobilePortfolioState extends State<MobilePortfolio>
                       fontWeight: FontWeight.w300,
                       fontSize: 20)),
               AutoSizeText("Websites",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       color: tabSelected == 2 ? kAccentColor : Colors.white,
                       fontWeight: FontWeight.w300,
@@ -96,18 +127,45 @@ class _MobilePortfolioState extends State<MobilePortfolio>
       body: TabBarView(
         controller: _tabController,
         children: [
-          ListView(
-            padding: EdgeInsets.all(30),
-            children: _prepareAllTab(),
-          ),
-          ListView(
-            padding: EdgeInsets.all(30),
-            children: _prepareAppsTab(),
-          ),
-          ListView(
-            padding: EdgeInsets.all(30),
-            children: _prepareWebsitesTab(),
-          ),
+          widget.inHome
+              ? Padding(
+                  padding: EdgeInsets.all(30.0.h),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: _prepareAllTab().getRange(0, 2).toList(),
+                  ),
+                )
+              : ListView(
+                  padding: EdgeInsets.all(30),
+                  children: _prepareAllTab(),
+                ),
+          widget.inHome
+              ? Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Column(
+                    children: _prepareAppsTab().getRange(0, 2).toList(),
+                  ),
+                )
+              : ListView(
+                  padding: EdgeInsets.all(30),
+                  children: _prepareAppsTab(),
+                ),
+          widget.inHome
+              ? Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Column(
+                      children: _prepareWebsitesTab()
+                          .getRange(
+                              0,
+                              _prepareWebsitesTab().length <= 2
+                                  ? _prepareWebsitesTab().length
+                                  : 2)
+                          .toList()),
+                )
+              : ListView(
+                  padding: EdgeInsets.all(30),
+                  children: _prepareWebsitesTab(),
+                ),
         ],
       ),
     );
@@ -146,36 +204,5 @@ class _MobilePortfolioState extends State<MobilePortfolio>
         urlToLaunch: "https://amrmonzir.github.io/",
       )
     ];
-  }
-}
-
-class PortfolioCard extends StatelessWidget {
-  final String imageURL;
-  final String? urlToLaunch;
-
-  const PortfolioCard({required this.imageURL, this.urlToLaunch});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 450.h,
-          width: double.infinity,
-          child: Card(
-            clipBehavior: Clip.hardEdge,
-            child: InkWell(
-                onTap: () {
-                  if (urlToLaunch != null) launch(urlToLaunch!);
-                },
-                child: Image.asset(imageURL,
-                    fit: imageURL.contains("portfolio")
-                        ? BoxFit.cover
-                        : BoxFit.fitWidth)),
-          ),
-        ),
-        SizedBox(height: 25),
-      ],
-    );
   }
 }

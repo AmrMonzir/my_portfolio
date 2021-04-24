@@ -109,7 +109,7 @@ class MobileClientComments extends StatelessWidget {
                                             width: 1820.w,
                                             height: 274.h,
                                             child: Text(
-                                              "Amr has multiple significant traits, such as being articulate and disciplined with his work. He takes good care of the work he does. He is substantially creative as well as professional. I enjoyed working with him immensely, and would love to keep the flow of projects going.",
+                                              kClientCommentText,
                                               maxLines: 6,
                                               style: TextStyle(
                                                   fontSize: 75.sp,

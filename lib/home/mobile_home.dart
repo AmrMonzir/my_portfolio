@@ -42,9 +42,7 @@ class MobileHomePage extends StatelessWidget {
         Divider(color: kAccentColor),
         SizedBox(height: 20.h),
         Container(
-          height: 1217.h,
-          child: MobilePortfolio(inHome: true),
-        ),
+            child: MobilePortfolio(inHome: true), height: 840.h + 45.h + 290.h),
         Divider(color: kAccentColor),
         SizedBox(height: 40.h),
         Container(

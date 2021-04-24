@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/portfolio/widgets/portfolio_card.dart';
+import 'package:my_portfolio/portfolio/widgets/project_card_desktop.dart';
 
 const kAppBarButtonTextStyle =
     TextStyle(color: Colors.white, fontWeight: FontWeight.w500);
@@ -61,3 +61,9 @@ List<Widget> kWebCards = [
         "A website created using Flutter Web to display my portfolio projects",
   ),
 ];
+
+const String kAboutText =
+    '''Amr is a passionate freelance software developer with experience in C# (Unity3D, .Net), C++, Java (Android), and currently in love with Flutter and going through its stages in learning best practicies and developing his suite of skills. Amr is always on the look out for new and exciting opportunities!''';
+
+const String kClientCommentText =
+    "Amr has multiple significant traits, such as being articulate and disciplined with his work. He takes good care of the work he does. He is substantially creative as well as professional. I enjoyed working with him immensely, and would love to keep the flow of projects going.";
