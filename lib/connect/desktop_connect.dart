@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:my_portfolio/widgets/rounded_button.dart';
 import 'package:my_portfolio/widgets/top_bar.dart';
 
+import 'connect_action.dart';
+
 class DesktopConnect extends StatefulWidget {
   final bool inHome;
 
@@ -58,8 +60,7 @@ class _ConnectDesktopState extends State<DesktopConnect> {
                   ),
                 ),
                 Container(
-                    child: AutoSizeText(
-                        "If you liked what you saw so far, and you have something I could help you with, send me a message and let's have a chat about it!",
+                    child: AutoSizeText(kContactText,
                         style: TextStyle(
                             fontWeight: FontWeight.w300, fontSize: 20),
                         textAlign: TextAlign.center,
@@ -153,10 +154,12 @@ class _ConnectDesktopState extends State<DesktopConnect> {
                             text: "Hire Me",
                             onPress: () {
                               if (_formKey.currentState!.validate()) {
-                                // If the form is valid, display a snackbar. In the real world,
-                                // you'd often call a server or save the information in a database.
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Processing Data')));
+                                if (ConnectAction.connectWithParams(
+                                    mail: _email!,
+                                    name: _name!,
+                                    message: _message!))
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Sending email')));
                               }
                             }),
                       ),

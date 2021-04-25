@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_portfolio/about/desktop_about.dart';
 import 'package:my_portfolio/client_comments/desktop_client_comments.dart';
 import 'package:my_portfolio/home/fragments/my_info_column.dart';
 import 'package:my_portfolio/portfolio/desktop_portfolio.dart';
 import 'package:my_portfolio/widgets/bottom_nav.dart';
-import 'package:my_portfolio/widgets/measureable_widget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:my_portfolio/connect/desktop_connect.dart';
 
@@ -25,22 +25,57 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
       child: ListView(children: [
         Container(
           height: 1217.h,
-          child: Row(
-            children: [
-              SizedBox(width: 84.w),
-              Expanded(
-                flex: 2,
-                child: MyInfoColumn(
-                  screenType: DeviceScreenType.desktop,
-                  mainAlignment: MainAxisAlignment.spaceEvenly,
+          child: Stack(children: [
+            Positioned(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: kAccentColor.withOpacity(0.1),
+                      shape: BoxShape.circle),
+                  width: 574.w,
+                  height: 547.w,
                 ),
+                left: -360.w,
+                top: 120.h),
+            Positioned(
+              child: SvgPicture.asset(
+                "assets/images/untitled.svg",
+                color: kAccentColor.withOpacity(.1),
+                width: 105.w,
+                height: 392.h,
               ),
-              Expanded(
-                flex: 3,
-                child: Image.asset("assets/images/me3.png"),
-              )
-            ],
-          ),
+              right: -150.w,
+              bottom: 200.h,
+            ),
+            Positioned(
+              child: SvgPicture.asset(
+                "assets/images/untitled.svg",
+                color: kAccentColor.withOpacity(.1),
+                width: 105.w,
+                height: 392.h,
+              ),
+              right: -150.w,
+              bottom: 592.h,
+            ),
+            Positioned.fill(
+              child: Row(
+                children: [
+                  SizedBox(width: 84.w),
+                  Flexible(
+                    flex: 2,
+                    child: MyInfoColumn(
+                      screenType: DeviceScreenType.desktop,
+                      mainAlignment: MainAxisAlignment.spaceEvenly,
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Image.asset("assets/images/me3.png",
+                        width: 908, height: 1033),
+                  )
+                ],
+              ),
+            ),
+          ]),
         ),
         Divider(color: Color(0xff707070)),
         SizedBox(height: 40.h),

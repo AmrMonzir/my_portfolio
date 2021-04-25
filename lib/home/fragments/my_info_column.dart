@@ -43,7 +43,7 @@ class MyInfoColumn extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: AutoSizeText(
-                    "A Mobile Front-End/Fullstack Developer with experience in Dart (Flutter), Java, C#, C++",
+                    "A Mobile/Fullstack Developer with experience in Dart (Flutter), Java, C#, C++",
                     textAlign: crossAlignment != null ? TextAlign.center : null,
                     style:
                         TextStyle(fontSize: 26, fontWeight: FontWeight.w300)),
@@ -116,7 +116,10 @@ class MyInfoColumn extends StatelessWidget {
                     Expanded(
                         child: RoundedButton(
                       text: "Hire Me",
-                      onPress: () {},
+                      onPress: () {
+                        launch(
+                            "https://www.upwork.com/o/profiles/users/~01184dd503ff38931f/");
+                      },
                     )),
                     SizedBox(width: 25.w),
                     Expanded(

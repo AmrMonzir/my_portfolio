@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
         children: [
           ResponsiveBuilder(builder:
               (BuildContext context, SizingInformation sizingInformation) {
-            if (sizingInformation.isDesktop)
+            if (!sizingInformation.isMobile)
               return TopBar(navIndex: 0);
             else
               return Container();

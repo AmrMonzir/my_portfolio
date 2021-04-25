@@ -4,6 +4,7 @@ import 'package:my_portfolio/constants.dart';
 import 'package:my_portfolio/widgets/rounded_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/widgets/top_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DesktopAbout extends StatelessWidget {
   final bool inHome;
@@ -71,7 +72,10 @@ class DesktopAbout extends StatelessWidget {
                           height: 100.h,
                           child: RoundedButton(
                             text: "Download CV",
-                            onPress: () {},
+                            onPress: () {
+                              launch(
+                                  "https://drive.google.com/file/d/1kKFY4UNUYE5D9aCLadmLlBQKwXIbLOTn/view");
+                            },
                           )),
                       SizedBox(height: 100.h),
                     ],

@@ -34,7 +34,8 @@ class DesktopClientComments extends StatelessWidget {
                 SizedBox(height: 40.5.h),
                 Expanded(
                   child: AutoSizeText(
-                    "Have a glimpse of what my clients think about my work! Maybe you can be the next one?.",
+                    kPortfolioText,
+                    textAlign: TextAlign.center,
                     maxLines: 2,
                     style: TextStyle(fontWeight: FontWeight.w300, fontSize: 30),
                   ),

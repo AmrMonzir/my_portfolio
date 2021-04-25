@@ -63,7 +63,13 @@ List<Widget> kWebCards = [
 ];
 
 const String kAboutText =
-    '''Amr is a passionate freelance software developer with experience in C# (Unity3D, .Net), C++, Java (Android), and currently in love with Flutter and going through its stages in learning best practicies and developing his suite of skills. Amr is always on the look out for new and exciting opportunities!''';
+    '''Amr is a passionate freelance software developer with experience in C# (Unity3D, .Net), C++, Java (Android), and currently in love with Flutter and going through its stages in learning best practices and developing his suite of skills.\n\nGraduated in 2019 as a Computer Engineer, and having since worked on multiple projects and learned quite a lot of frameworks and packages in mobile and backend development.\n\nAmr is always on the look out for new and exciting opportunities!''';
 
 const String kClientCommentText =
     "Amr has multiple significant traits, such as being articulate and disciplined with his work. He takes good care of the work he does. He is substantially creative as well as professional. I enjoyed working with him immensely, and would love to keep the flow of projects going.";
+
+const String kContactText =
+    "If you liked what you saw so far, and you have something I could help you with, send me an email and let's discuss it!";
+
+const String kPortfolioText =
+    "Have a glimpse of what my clients think about my work! Maybe you can be the next one?";

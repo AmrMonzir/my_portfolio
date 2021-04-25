@@ -56,9 +56,10 @@ class MobileClientComments extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: AutoSizeText(
-                          "Have a glimpse of what my clients think about my work! Maybe you can be the next one?",
+                          kPortfolioText,
                           maxLines: 2,
                           minFontSize: 15,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.w300, fontSize: 30),
                         ),
