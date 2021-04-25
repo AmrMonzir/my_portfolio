@@ -111,7 +111,7 @@ class MobileClientComments extends StatelessWidget {
                                             height: 274.h,
                                             child: Text(
                                               kClientCommentText,
-                                              maxLines: 6,
+                                              maxLines: 9,
                                               style: TextStyle(
                                                   fontSize: 75.sp,
                                                   fontWeight: FontWeight.w300),
